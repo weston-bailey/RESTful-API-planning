@@ -4,7 +4,7 @@
 
 ## What is REST?
 
-`REST` is an acronym for *_representational state transfer_*, and it describes a software architechure pattern that was created to solve software engineering issues presented by the world wide web. `REST` describes how an API should behave in order in order to maintain scalability, uniformity and backwards compatibilty. Essentially, `REST` is a set of rules that if you follow, your web application's backed will avoid extremely complex and difficult to avoid bugs! You just need to learn the rules of a `RESTful API`, and how to apply them.
+`REST` is an acronym for *_representational state transfer_*, and it describes a software architechure pattern that was created to solve software engineering issues presented by the world wide web. `REST` describes how an API should behave in order to maintain scalability, uniformity and backwards compatibilty. Essentially, `REST` is a set of rules that if you follow, your web application's backed will be free of extremely complex and otherwise difficult to avoid bugs! You just need to learn the rules of a `RESTful API`, and how to apply them.
 
 The simple English Wikipedia [used to have](https://simple.wikipedia.org/w/index.php?title=Representational_state_transfer&oldid=7415343) some really great non technical exmaples of `RESTful` systems. Lets read them now:
 
@@ -29,9 +29,12 @@ And keep the following in mind: `REST` is a based on resources and actions that 
 Here is the [ERD]() for a simple blog-style social media application:
 
 One `user` can have many `posts`. `Users`:`Posts` are **1:M**
+
 One `post` can have many `comments`. `Posts`:`Comments` are **1:M**
-Many `posts` can have many `tags`. `Posts`:`Tags` are **N:M**
-Many `tags` can have many `posts`. `Tags`:`Posts` are **N:M**
+
+
+
+![blog app ERD](./imgs/blog-erd.drawio.png)
 
 ## REST api template
 
