@@ -28,9 +28,9 @@ Read through the following links, and keep the following in mind: `REST` is a ba
 
 Here is the [ERD](https://gasei.gitbook.io/sei/04-databases/erd) for a simple blog-style social media application:
 
-One `user` can have many `blogs`. `Users`:`Posts` have a **1:M**
+One `user` can have many `blogs`. `Users`:`Blogs` have a **1:M**
 
-One `blog` can have many `comments`. `Posts`:`Comments` have a **1:M**
+One `blog` can have many `comments`. `Blogs`:`Comments` have a **1:M**
 
 ![blog app ERD](./imgs/blog-erd.drawio.png)
 
@@ -58,14 +58,14 @@ The above could be described as a template for a `REST API's` endpoints that all
     * as a sub note, notice that this allows us to avoid url/route _anti-patterns_ such as redundancies like `POST /users/new` or `PATCH /users/:user_id/update` which communicates nothing extra by lengthening the url with useless information that is not related to the resource that is having an action taken on it.
 * when `POST`ing, `PUT`ing, `PATCH`ing, or `DELETE`ing there are different options on how to handle the response, the best choice being dependant on how your API needs to work
 
-### Planning Further Functionality
+### Planning Blog Functionality
 
 Our API is off to a great start, lets talk about some of the other features we need to implement:
 
 * CRUD on blogs, which have a relationship to users
 * CRUD on comments, which has a relationship with users and comments
 
-Lets start with CRUDing blogs. URLs will need to describe the relationship to users, but only when necessary. Take a moment to consider, when is the user who owns a blog important information to transmit in the URL? What CRUD actions would require the user id? Which HTTP methods map to those CRUD Actions?
+Lets start with CRUDing blogs. URLs will need to describe the relationship to users, but only when necessary. Take a moment to consider, when is the user who owns a blog important information to transmit in the URL? What CRUD actions would require the user id? Which HTTP methods map to those CRUD Actions? Sometimes a url with more than one variadic route parameter is referred to as a _Compound Url_.
 
 <details>
     <summary>Reveal the Answer</summary>
@@ -87,6 +87,35 @@ Here is our `RESTful` routing chart for CRUD on our blog model:
 Notice that the one URL that deviates from the users chart is `POST`ing a new blog, since a relationship is involved.
     
 What about retrieving all of a single users blogs? It is present state, `GET /users/:user_id`, could serve this purpose; sending all of the user data to display including their blogs, but depending on how your API needed to serve data, it would make sense in some circumstances to have a `POST /users/:user_id/blogs` to retrieve all of the blog made by the user with an id of `:user_id`.
+</details>
+
+### Planning Comment Functionality
+
+Comments are going to have the most complex relationships we have planned so far: a comment needs to know 
+
+1. the user that created the comment
+1. the blog that is being commented on  
+
+This is going to create more complex compound URLs to describe the actions being taken on resources. Take some time to consider the routes that would be needed to let a user CRUD comments: Which of the HTTP methods will create transactions in the database that require information on the relationships? Which methods will not need any database model except comments?
+
+<details>
+    <summary>Reveal the Answer</summary>
+    
+When a new comment is created, we will need to know not only which user is creating it, but also the post that the comment is on. The url should reflect all of the models that are involved in this action: users, posts, and comments. 
+    
+When `READ`ing, `UPDATING` or `DELETING`, the user who created the comment, and the post that it is on, isn't strictly necessary. It _MIGHT_ be needed, but isn't strictly needed. 
+    
+Here is our `RESTful` routing chart for CRUD on our comment model:
+    
+| HTTP METHOD (_Verb_) | URL (_Nouns_)                            | CRUD    | Response                                  | Notes                                                                                                                           |
+| -------------------- | ---------------------------------------- | ------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| POST                 | `/users/:user_id/blog/:blog_id/comments` | CREATE  | No Data                                   | can send back a status `304` (no content), a redirect to where to find data (GET `/blogs/:_id`) or just the new comment data    |
+| PUT/PATCH            | `/comments/:comments_id`                 | UPDATE  | No data, or updated comment `{ comment }` | can send back a status `304` (no content), a redirect to where to find data (GET `/blog/:blog_id`) or just the new comment data |
+| DELETE               | `/comments/:comments_id`                 | DESTROY | No data                                   | can send back a status `304` (no content), a redirect to where to find data (GET `/blogs`)                                      |
+    
+This chart is actually a little smaller. Why is that? `GET /comments` and `GET /comments/:comment_id` are notably omitted. Why is that? 
+    
+Does it make sense from as user experience perspective to show all comments made on all posts? Is that meaningful data? What about a comment details page? Does a comment have enough context outside of its relationship to a blog to merit this route? What about sending back a comment after `POST`ing a new one to the database? Is that the best way to handle sending back comment data?
 </details>
 
 ## Activity: Planning a `REST API`
