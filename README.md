@@ -39,7 +39,7 @@ Here is the [ERD](https://gasei.gitbook.io/sei/04-databases/erd) for a simple bl
 
 ![blog app ERD](./imgs/blog-erd.drawio.png)
 
-> This social media app will allow users to blog, comment on blogs, and search for other users to view the blogs and comments they have made. Users will be able to perform full CRUD actions (`CREATE READ UPDATE DESTROY`) on resources that they own. We won't worry about resource ownership, and will assume that that is handled for us.
+This social media app will allow users to blog, comment on blogs, and search for other users to view the blogs and comments they have made. Users will be able to perform full CRUD actions (`CREATE READ UPDATE DESTROY`) on resources that they own. We won't worry about resource ownership, and will assume that that is handled for us.
 
 ### Designing the API
 
@@ -144,7 +144,7 @@ Now it is time for you to plan a `RESTful API` of your own. Take a look at this 
 * One `book` can have many `genres`, and a `genre ` can have many `books`. `Books`:`Genres` have a **N:M** relationship. 
 * The table `books_genres` is simply a join table, used to to maintain a **N:M** relationship. It shouldn't be a part of any **URL**.
 
-> Your Task is to write a `RESTful` routing chart for the library system's API. Your API will need to serve full CRUD on `members`, `books`, and `genres`. Do not worry about authentication, another team is handling that. 
+Your Task is to write a `RESTful` routing chart for the library system's API. Your API will need to serve full CRUD on `members`, `books`, and `genres`. Do not worry about authentication, another team is handling that. 
 
 You can use this markdown chart:
 
