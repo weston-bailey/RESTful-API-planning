@@ -6,7 +6,7 @@
 
 * Fork and clone this repo
 * Completely read through this repo, the links from the **Reading Preparation** section, and the **How DB Models Relate to Routes in REST**
-* create a restful routing chart in this `.md.` file using the template provided in the **Deliverable: Planning a `REST API`**
+* create a restful routing chart in this `.md` file using the template provided in the **Deliverable: Planning a `REST API`** by following the directions there
 
 ## What is REST?
 
