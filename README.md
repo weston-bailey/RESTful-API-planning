@@ -161,6 +161,7 @@ You can use this markdown chart:
 * `books` and `genres` are **N:M** and we have the following user stories. Think of the  `HTTP methods` first and then think about the _URLs_. How can you best describe the data relationships in your _URLs_:
 	* as a user, I would like to see all the genres a particular book is in.
 	* as a user, I would like to see all the books a particular genre has is in it.
+* You will need need routes to handle adding a book to a genre and vice-versa
 
 ---
 
