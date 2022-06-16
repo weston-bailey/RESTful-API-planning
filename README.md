@@ -2,9 +2,17 @@
 
 ---
 
+## Getting Started
+
+* Fork and clone this repo
+* Completely read through this repo, the links from the **Reading Preparation** section, and the **How DB Models Relate to Routes in REST**
+* create a restful routing chart in this `.md.` file using the template provided in the **Deliverable: Planning a `REST API`**
+
 ## What is REST?
 
 `REST` is an acronym for *_representational state transfer_*, and it describes a software architecture pattern that was created to solve software engineering issues presented by the world wide web. `REST` describes how an API should behave in order to maintain scalability, uniformity and backwards compatibility. Essentially, `REST` is a set of rules that if you follow, your web application's backed will be free of extremely complex and otherwise difficult to avoid bugs! You just need to learn the rules of a `RESTful API`, and how to apply them.
+
+## Reading Preparation
 
 The simple English Wikipedia [used to have](https://simple.wikipedia.org/w/index.php?title=Representational_state_transfer&oldid=7415343) some really great non-technical examples of `RESTful` systems. Lets read them now:
 
@@ -13,8 +21,6 @@ The simple English Wikipedia [used to have](https://simple.wikipedia.org/w/index
 > An example of a non-RESTful real-world system would be the traditional home movie collection. In order to have access to any given movie, the library owner must obtain a physical copy of it. This results in substantial waste as more copies are in existence than are in use at any given moment. Also, the time required to add new titles to the library is generally non-trivial. Streaming video is the RESTful counterpart to the home library. Instead of having a complete copy of every movie stored in the home, the movie is referred to by its title only and the content of the movie is streamed on demand. 
 
 > The World Wide Web is the largest example of a RESTful system today. Physical libraries are its non-RESTful equivalent. Instead of sending a physical electronic copy of every digital resource to each person or library, we assign each resource a URL identifier "http://example.com", then access the actual content via the Internet rather than retrieving a local copy from an optical disk or a hard drive. 
-
-## Reading Preparation
 
 Read through the following links, and keep the following in mind: `REST` is a based on resources and actions that can be taken on them. Practically what this means for us a _*resource*_ is a database `model` or `table`, an _*action*_ is a database [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) action, and _*URIs*_ are routes.
 
@@ -84,7 +90,7 @@ Here is our `RESTful` routing chart for CRUD on our blog model:
 | PUT/PATCH            | `/blogs/:blog_id`       | UPDATE  | No data, or updated blog `{  blog }`    | can send back a status `304` (no content), a redirect to where to find data (GET `/blogs/:blog_id`) or just the new user data |
 | DELETE               | `/blogs/:blog_id`       | DESTROY | No data                                 | can send back a status `304` (no content), a redirect to where to find data (GET `/blogs`)                                    |
     
-Notice that the one URL that deviates from the users chart is `POST`ing a new blog, since a relationship is involved.
+Notice that the one URL that deviates from the users chart is `POST`ing a new blog, since a relationship is involved. A blog cannot be made without a user being involved, which is why this is the only way to create a new blog.
     
 What about retrieving all of a single users blogs? It is present state, `GET /users/:user_id`, could serve this purpose; sending all of the user data to display including their blogs, but depending on how your API needed to serve data, it would make sense in some circumstances to have a `POST /users/:user_id/blogs` to retrieve all of the blog made by the user with an id of `:user_id`.
 </details>
@@ -118,7 +124,33 @@ This chart is actually a little smaller. Why is that? `GET /comments` and `GET /
 Does it make sense from as user experience perspective to show all comments made on all posts? Is that meaningful data? What about a comment details page? Does a comment have enough context outside of its relationship to a blog to merit this route? What about sending back a comment after `POST`ing a new one to the database? Is that the best way to handle sending back comment data?
 </details>
 
-## Activity: Planning a `REST API`
+## Deliverable: Planning a `REST API`
+
+Now it is time for you to plan a `RESTful API` of your own. Take a look at this ERD for a library management system, you will be writing a restful routing chart for it:
+
+![library ERD](./imgs/lib-erd.drawio.png)
+
+* One `member` can have many `books`. `Members`:`Books` have a **1:M** relationship. This relationship describes books being checked out of the library. It is possible for a `book` to not have a `member`, if it is not checked out.
+* One `book` can have many `genres`, and a `genre ` can have many `books`. `Books`:`Genres` have a **N:M** relationship. 
+* The table `books_genres` is simply a join table, used to to maintain a **N:M** relationship. It shouldn't be a part of any **URL**
+
+> Your Task is to write a `RESTful` routing chart for the library system's API. Your API will need to serve full CRUD on `members`, `books`, and `genres`. Do not worry about authentication, another team is handling that. 
+
+You can use this markdown chart:
+
+| HTTP METHOD (_Verb_) | URL (_Nouns_) | CRUD | Response | Notes |
+| -------------------- | ------------- | ---- | -------- | ----- |
+|                      |               |      |          |       |
+|                      |               |      |          |       |
+
+#### Things to keep in mind
+
+* A `book` can exit in the database without a member creating it, unlike our blog example. How will this affect the API's endpoints (_URLs_)?
+* You will need to create routes that allow `members` to checkout `books` and return `books` to the library. What HTTP methods should you use for these? What _URLs_ would best describe that models that are having actions taken on them _and_ the relationships between the data.
+	* **HINT:** if your _URLs_ have the word `checkout` in them, you are falling victim to one of the dreaded **_anti-patterns_**!
+* `books` and `genres` are **N:M** and we have the following user stories. Think of the  `HTTP methods` first and then think about the _URLs_. How can you best describe the data relationships in your _URLs_:
+	* as a user, I would like to see all the genres a particular book is in.
+	* as a user, I would like to see all the books a particular genre has is in it.
 
 ---
 
