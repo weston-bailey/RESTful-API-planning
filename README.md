@@ -150,7 +150,12 @@ You can use this markdown chart:
 
 | HTTP METHOD (_Verb_) | URL (_Nouns_) | CRUD | Response | Notes |
 | -------------------- | ------------- | ---- | -------- | ----- |
-| GET                     | /members              | read     | array of all members         | shows all members in the array      |
+| GET                     | /members              | READ     | array of all members         | show all members in the array      |
+| POST                     | /members              | CREATE     | new user         | make new user/member      |
+| GET                     | /members/:member_id              | READ     | single user/member         | detail view of user profile     |
+| PUT                     | /members/:member_id              | UPDATE     | single user/member         | update member profile details      |
+|                      |               |      |          |       |
+|                      |               |      |          |       |
 |                      |               |      |          |       |
 |                      |               |      |          |       |
 
