@@ -150,10 +150,15 @@ You can use this markdown chart:
 
 | HTTP METHOD (_Verb_) | URL (_Nouns_) | CRUD | Response | Notes |
 | -------------------- | ------------- | ---- | -------- | ----- |
-|         GET          |  /members     | READ | Array of members | allows a member to find other members      |
-|         GET          | /members/:user_id | READ | single user| details view of a single member    |
-|        POST          | /members     |  CREATE | No Data or new user | redirect to where to find data(GET /members/:userid) or just the new member data |
-|         GET          |  /members     | READ | Array of members | allows a member to find other members      |
+|         GET          |  `/members `  | READ | Array of members | allows a member to find other members      |
+|         GET          | `/members/:user_id`| READ | single user| details view of a single member    |
+|        POST          | `/members`    |  CREATE | No Data or new user | redirect to where to find data(GET /members/:userid) or just the new member data |
+|         DELETE      | `/members/:user_id`     | DESTROY | NO DATA| can send back a status 204(no content), a redirect to where to find data (GET `/members`)  |
+|         GET          | `/books`     | READ | Array of books | shows all the books     |
+|         GET          |  `/books/:book_id` | READ | single book| allows a member to find single book availability and genres |
+|         PUT/PATCH     | `/books/:book_id`     | UPDATE | updated books | redirect to where to find data or new book data |
+|         GET          | `/genres`     | READ | Array of genres | shows all genres of the books  |
+|         GET          | `/genres/:genre_id`     | READ | single genre | shows all the books in selected genre   |
 
 #### Things to keep in mind
 
