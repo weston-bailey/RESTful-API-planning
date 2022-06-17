@@ -150,8 +150,10 @@ You can use this markdown chart:
 
 | HTTP METHOD (_Verb_) | URL (_Nouns_) | CRUD | Response | Notes |
 | -------------------- | ------------- | ---- | -------- | ----- |
-|                      |               |      |          |       |
-|                      |               |      |          |       |
+|         GET          |  /members     | READ | Array of members | allows a member to find other members      |
+|         GET          | /members/:user_id | READ | single user| details view of a single member    |
+|        POST          | /members     |  CREATE | No Data or new user | redirect to where to find data(GET /members/:userid) or just the new member data |
+|         GET          |  /members     | READ | Array of members | allows a member to find other members      |
 
 #### Things to keep in mind
 
