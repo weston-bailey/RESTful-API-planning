@@ -153,12 +153,12 @@ You can use this markdown chart:
 | GET                     | /members              | READ     | array of all members         | show all members in the array      |
 | POST                     | /members              | CREATE     | new user         | make new user/member      |
 | GET                     | /members/:member_id              | READ     | single user/member         | detail view of user profile     |
-| PUT                     | /members/:member_id              | UPDATE     | single user/member         | update user profile details      |
+| PUT/PATCH                     | /members/:member_id              | UPDATE     | single user/member         | update user profile details      |
 | DELETE                     | /members/:member_id              | DESTROY     | n/a         | delete user/member      |
-| GET                     | /members/:member_id/books              | READ     | array of books belonging to member         | show books that have been checked out by user      |
+| PUT/PATCH                     | /members/:member_id/books              | UPDATE     | user/member array of books         | check book out/return book      |
 | GET                     | /books              | READ     | array of all books         | show all books in array to user      |
 | GET                     | /books/:book_id              | READ     | single book from array         | show details of single book      |
-| PUT                     | /books/:book_id              | UPDATE     | checked out by user/member         | update book details to show member checkout       |
+| PUT/PATCH                     | /books/:book_id              | UPDATE     | checked out by user/member         | update book details to show member checkout       |
 | GET                     | /books/:book_id/genres              | READ     | array of genres belonging to book         | show all genres of book      |
 | DELETE                     | /books/:book_id              | DESTROY     | returned by user/member         | remove member id from book details to show return      |
 | GET                     | /genres              | READ     | array of all genres         | show all genres of books      |
