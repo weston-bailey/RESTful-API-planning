@@ -157,7 +157,7 @@ You can use this markdown chart:
 | DELETE                     | /members/:member_id              | DESTROY     | n/a         | delete user/member      |
 | GET                     | /books              | READ     | array of all books         | show all books in array to user      |
 | GET                     | /books/:book_id              | READ     | single book from array         | show details of single book      |
-| PUT                     | /books/:book_id              | UPDATE     | checked out by user/member         | update book info to show member checkout       |
+| PUT                     | /books/:book_id              | UPDATE     | checked out by user/member         | update book details to show member checkout       |
 | DELETE                     | /books/:book_id              | DESTROY     | returned by user/member         | remove member id from book info to show return      |
 | GET                     | /genres              | READ     | array of all genres         | show all genres of books      |
 | GET                     | /genres/:genre_id              | READ     | books belonging to single genre         | show all books belonging to specific genre     |
