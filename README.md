@@ -150,8 +150,24 @@ You can use this markdown chart:
 
 | HTTP METHOD (_Verb_) | URL (_Nouns_) | CRUD | Response | Notes |
 | -------------------- | ------------- | ---- | -------- | ----- |
-|                      |               |      |          |       |
-|                      |               |      |          |       |
+| Get | /members  | Read |  List of members |       |
+| Get | /members/:id  | Read |  Show a certain member | profile      |
+| Post | /members  | Create |  Go to member profile | creates new member      |
+| Put | /members/:id  | Update |  Go to member profile | updates a member detail      |
+| Delete | /members/:id  | Update |  List of members | Deletes a member      |
+| Get | /members/:id/books  | Read |  List of books | checked out by certain member      |
+| Post | /members/:id/books/:id  | Create |  List of member's books | checks out book     |
+| Delete | /members/:id/books/:id  | Destroy |  List of member's books | return book     |
+| Post | /books  | Create |  List of all books | add book to library     |
+| Get | /books  | Read |  List of all books |      |
+| Get | /books/:id  | Read |  Show a ceratin book |      |
+| Put | /books/:id  | Update |  Show a ceratin book | Update book details     |
+| Delete | /books/:id  | Destroy |  none | Remove book from library     |
+| Post | /genres | Create |  Link to genre | Add new genre     |
+| Get | /genres/:id/books | Read |  List of books | marked a certain genre     |
+| Post | /genres/:id/books/:booksId | Create |  ??? | connect book to genre     |
+| Delete | /genres/:id/books/:booksId | Destroy |  ??? | remove book from genre     |
+
 
 #### Things to keep in mind
 
