@@ -161,10 +161,10 @@ You can use this markdown chart:
 | DELETE                     | /books/:book_id              | DESTROY     | returned by user/member         | remove member id from book info to show return      |
 | GET                     | /genres              | READ     | array of all genres         | show all genres of books      |
 | GET                     | /genres/:genre_id              | READ     | books belonging to single genre         | show all books belonging to specific genre     |
-| PUT                     | /genres/:genre_id/books/:book_id              | UPDATE     | specific genre of single book         | updates genre of book then      |
-|                      |               |      |          |       |
-|                      |               |      |          |       |
-|                      |               |      |          |       |
+| POST                     | /genre/:genre_id              | CREATE     | new book         | add new book to specific genre      |
+| PUT                     | /genres/:genre_id/books/:book_id              | UPDATE     | specific genre of single book         | update genre of book      |
+| DELETE                     | /genres/:genre_id/books/:book_id              | DESTROY     | n/a         | delete book from genre      |
+| GET                     | /books/:book_id/genres              | READ     | array of genres belonging to book         | show all genres of book      |
 
 #### Things to keep in mind
 
