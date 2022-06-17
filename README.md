@@ -39,7 +39,7 @@ Here is the [ERD](https://gasei.gitbook.io/sei/04-databases/erd) for a simple bl
 
 ![blog app ERD](./imgs/blog-erd.drawio.png)
 
-> This social media app will allow users to blog, comment on blogs, and search for other users to view the blogs and comments they have made. Users will be able to perform full CRUD actions (`CREATE READ UPDATE DESTROY`) on resources that they own. We won't worry about resource ownership, and will assume that that is handled for us.
+This social media app will allow users to blog, comment on blogs, and search for other users to view the blogs and comments they have made. Users will be able to perform full CRUD actions (`CREATE READ UPDATE DESTROY`) on resources that they own. We won't worry about resource ownership, and will assume that that is handled for us.
 
 ### Designing the API
 
@@ -144,14 +144,28 @@ Now it is time for you to plan a `RESTful API` of your own. Take a look at this 
 * One `book` can have many `genres`, and a `genre ` can have many `books`. `Books`:`Genres` have a **N:M** relationship. 
 * The table `books_genres` is simply a join table, used to to maintain a **N:M** relationship. It shouldn't be a part of any **URL**.
 
-> Your Task is to write a `RESTful` routing chart for the library system's API. Your API will need to serve full CRUD on `members`, `books`, and `genres`. Do not worry about authentication, another team is handling that. 
+Your Task is to write a `RESTful` routing chart for the library system's API. Your API will need to serve full CRUD on `members`, `books`, and `genres`. Do not worry about authentication, another team is handling that. 
 
 You can use this markdown chart:
 
 | HTTP METHOD (_Verb_) | URL (_Nouns_) | CRUD | Response | Notes |
 | -------------------- | ------------- | ---- | -------- | ----- |
-|                      |               |      |          |       |
-|                      |               |      |          |       |
+| GET                     | /members              | READ     | array of all members         | show all members in the array      |
+| POST                     | /members              | CREATE     | new user         | make new user/member      |
+| GET                     | /members/:member_id              | READ     | single user/member         | detail view of user profile     |
+| PUT                     | /members/:member_id              | UPDATE     | single user/member         | update user profile details      |
+| DELETE                     | /members/:member_id              | DESTROY     | n/a         | delete user/member      |
+| GET                     | /members/:member_id/books              | READ     | array of books belonging to member         | show books that have been checked out by user      |
+| GET                     | /books              | READ     | array of all books         | show all books in array to user      |
+| GET                     | /books/:book_id              | READ     | single book from array         | show details of single book      |
+| PUT                     | /books/:book_id              | UPDATE     | checked out by user/member         | update book details to show member checkout       |
+| GET                     | /books/:book_id/genres              | READ     | array of genres belonging to book         | show all genres of book      |
+| DELETE                     | /books/:book_id              | DESTROY     | returned by user/member         | remove member id from book details to show return      |
+| GET                     | /genres              | READ     | array of all genres         | show all genres of books      |
+| POST                     | /genre/:genre_id              | CREATE     | new book         | add new book to specific genre      |
+| GET                     | /genres/:genre_id/books              | READ     | array of books belonging to single genre         | show all books belonging to specific genre     |
+| PUT                     | /genres/:genre_id/books/:book_id              | UPDATE     | specific genre of single book         | update genre of book      |
+| DELETE                     | /genres/:genre_id/books/:book_id              | DESTROY     | n/a         | delete book from specific genre      |
 
 #### Things to keep in mind
 
@@ -161,6 +175,7 @@ You can use this markdown chart:
 * `books` and `genres` are **N:M** and we have the following user stories. Think of the  `HTTP methods` first and then think about the _URLs_. How can you best describe the data relationships in your _URLs_:
 	* as a user, I would like to see all the genres a particular book is in.
 	* as a user, I would like to see all the books a particular genre has is in it.
+* You will need need routes to handle adding a book to a genre and vice-versa
 
 ---
 
