@@ -48,13 +48,13 @@ Remember, [URLs](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) repr
 First lets make a RESTful routing chart that describes the full CRUD for our user model. This chart will include the `HTTP METHOD`, `URL`, `CRUD action` and `response` of each route. As a note, some auth setups make is so the user model and information would be hidden from the plain view of the user (in the URLs and such, for example), but assume that ours does not for this example.
 
 
-| HTTP METHOD (_Verb_) | URL (_Nouns_)     | CRUD    | Response                             | Notes                                                                                                                    |
-| -------------------- | ----------------- | ------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| GET                  | `/users`          | READ    | Array of users `{ [ user, user ] }`  | allows a user to find other users                                                                                        |
-| GET                  | `/users/:user_id` | READ    | Single user `{ user }`               | details view of a single user (aka `/users/1234`) akin to a 'user profile'                                               |
-| POST                 | `/users`          | CREATE  | No Data, or new user `{ user }`      | can send back a status `304` (no content), a redirect to where to find data (GET `/users/:user_id`) or just the new user data |
-| PUT/PATCH            | `/users/:user_id` | UPDATE  | No data, or updated user `{ user }`  | can send back a status `304` (no content), a redirect to where to find data (GET `/users/:user_id`) or just the new user data |
-| DELETE               | `/users/:user_id` | DESTROY | No data                              | can send back a status `304` (no content), a redirect to where to find data (GET `/users`)                               |
+| HTTP METHOD (_Verb_) | URL (_Nouns_)     | CRUD    | Response                            | Notes                                                                                                                         |
+| -------------------- | ----------------- | ------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| GET                  | `/users`          | READ    | Array of users `{ [ user, user ] }` | allows a user to find other users                                                                                             |
+| GET                  | `/users/:user_id` | READ    | Single user `{ user }`              | details view of a single user (aka `/users/1234`) akin to a 'user profile'                                                    |
+| POST                 | `/users`          | CREATE  | No Data, or new user `{ user }`     | can send back a status `304` (no content), a redirect to where to find data (GET `/users/:user_id`) or just the new user data |
+| PUT/PATCH            | `/users/:user_id` | UPDATE  | No data, or updated user `{ user }` | can send back a status `304` (no content), a redirect to where to find data (GET `/users/:user_id`) or just the new user data |
+| DELETE               | `/users/:user_id` | DESTROY | No data                             | can send back a status `304` (no content), a redirect to where to find data (GET `/users`)                                    |
 
 The above could be described as a template for a `REST API's` endpoints that allow for full CRUD on a database model. Take note of a few things:
 
@@ -148,10 +148,23 @@ Your Task is to write a `RESTful` routing chart for the library system's API. Yo
 
 You can use this markdown chart:
 
-| HTTP METHOD (_Verb_) | URL (_Nouns_) | CRUD | Response | Notes |
-| -------------------- | ------------- | ---- | -------- | ----- |
-|                      |               |      |          |       |
-|                      |               |      |          |       |
+| HTTP METHOD (_Verb_) | URL (_Nouns_)                    | CRUD    | Response                                            | Notes                                                       |
+| -------------------- | -------------------------------- | ------- | --------------------------------------------------- | ----------------------------------------------------------- |
+| GET                  | /members/profile                 | READ    | Single user                                         | details view of a single user                               |
+| POST                 | /members                         | CREATE  | No data or new user                                 | will redirect to an auth page or create a new user          |
+| PUT                  | /members                         | UPDATE  | No data or updated member                           | shows new user data or redirects to where you can update it |
+| DELETE               | /members/profile                 | DESTROY | No data                                             | deletes a user profile                                      |
+| GET                  | /books                           | READ    | Show an array of all books                          | sends back info on all books                                |
+| GET                  | /books/:book_id                  | READ    | Show details of a specific book                     | details view of single book                                 |
+| GET                  | /members/books                   | READ    | SHows array of books checked out by user            | details view of books checked out                           |
+| PUT                  | /members/books/:book_id          | UPDATE  | Updates book in members to show check out           | CHecks out books to a member                                |
+| DELETE               | /members/books/:book_id          | DESTROY | Deletes instance of book in members specified array | deletes books after returned                                |
+| PUT                  | /book/:book_id/genres/:genres_id | UPDATE  | Adds a specific book to a genre                     | gives book a genre                                          |
+| GET                  | /genres                          | READ    | Array of genres                                     | Lists all genres                                            |
+| PUT                  | /genres/:genre_id/books/:book_id | UPDATE  | Adds a specific genre to a book                     | gives a genre a book                                        |
+| DELETE               | /book/:book_id/genres/:genres_id | DESTROY | Deletes an instance of a genre on a specific book   | deletes genre from a book                                   |
+| DELETE               | /genres/:genre_id/books/:book_id | DESTROY | Deletes an instance of a book in a specific genre   | deletes book from a genre                                   |
+
 
 #### Things to keep in mind
 
