@@ -153,7 +153,12 @@ You can use this markdown chart:
 | GET                     | /members              | READ     | array of all members         | show all members in the array      |
 | POST                     | /members              | CREATE     | new user         | make new user/member      |
 | GET                     | /members/:member_id              | READ     | single user/member         | detail view of user profile     |
-| PUT                     | /members/:member_id              | UPDATE     | single user/member         | update member profile details      |
+| PUT                     | /members/:member_id              | UPDATE     | single user/member         | update user profile details      |
+| DELETE                     | /members/:member_id              | DESTROY     | n/a         | delete user/member      |
+| GET                     | /books              | READ     | array of all books         | show all books in array to user      |
+| GET                     | /books/:book_id              | READ     | single book from array         | show details of single book      |
+| PUT                     | /books/:book_id              | UPDATE     | checked out by user/member         | update book info to show member checkout       |
+| DELETE                     | /books/:book_id              | DESTROY     | returned by user/member         | remove member id from book info to show return      |
 |                      |               |      |          |       |
 |                      |               |      |          |       |
 |                      |               |      |          |       |
