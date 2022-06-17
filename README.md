@@ -158,7 +158,7 @@ You can use this markdown chart:
 | GET                     | /books              | READ     | array of all books         | show all books in array to user      |
 | GET                     | /books/:book_id              | READ     | single book from array         | show details of single book      |
 | PUT                     | /books/:book_id              | UPDATE     | checked out by user/member         | update book details to show member checkout       |
-| DELETE                     | /books/:book_id              | DESTROY     | returned by user/member         | remove member id from book info to show return      |
+| DELETE                     | /books/:book_id              | DESTROY     | returned by user/member         | remove member id from book details to show return      |
 | GET                     | /genres              | READ     | array of all genres         | show all genres of books      |
 | GET                     | /genres/:genre_id              | READ     | books belonging to single genre         | show all books belonging to specific genre     |
 | POST                     | /genre/:genre_id              | CREATE     | new book         | add new book to specific genre      |
