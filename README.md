@@ -155,7 +155,7 @@ You can use this markdown chart:
 
 #### Things to keep in mind
 
-* A `book` can exit in the database without a member creating it, unlike our blog example. How will this affect the API's endpoints (_URLs_)?
+* A `book` can exist in the database without a member creating it, unlike our blog example. How will this affect the API's endpoints (_URLs_)?
 * You will need to create routes that allow `members` to checkout `books` and return `books` to the library. What HTTP methods should you use for these? What _URLs_ would best describe that models that are having actions taken on them _and_ the relationships between the data.
 	* **HINT:** if your _URLs_ have the word `checkout` in them, you are falling victim to one of the dreaded **_anti-patterns_**!
 * `books` and `genres` are **N:M** and we have the following user stories. Think of the  `HTTP methods` first and then think about the _URLs_. How can you best describe the data relationships in your _URLs_:
