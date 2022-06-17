@@ -148,10 +148,22 @@ Your Task is to write a `RESTful` routing chart for the library system's API. Yo
 
 You can use this markdown chart:
 
-| HTTP METHOD (_Verb_) | URL (_Nouns_) | CRUD | Response | Notes |
-| -------------------- | ------------- | ---- | -------- | ----- |
-|                      |               |      |          |       |
-|                      |               |      |          |       |
+| HTTP METHOD (_Verb_) | URL (_Nouns_)      | CRUD    | Response     | Notes |
+| -------------------- | -------------      | ----    | --------     | ----- |
+|    GET               | /members           | READ    |List person   |       |
+|    GET               | /members/:id       | READ    |person info   |       |
+|    GET               | /members/:id/books | READ    |book list     |       |
+|    POST              | /members           | CREATE  |create member |       |
+|    PUT               | /members/:id       | UPDATE  |              |       |
+|    DELETE            | /members/:id       | DESTROY |remove member |       |
+|    GET               | /books             | READ    |array of books|       |
+|    GET               | /books/id          | READ    |a book        |       |
+|    POST              | /books             | CREATE  |a new book    |       |
+|    PUT               | /books/id          | UPDATE  |update book   |       |
+|    DELETE            | /books/id          | DESTROY |remove book   |       |
+|    POST              | /genre             | POST    |              |       |
+|    POST              | /book/:id/genre/:id| CREATE  |              |       |
+|    DELETE            | /genre/id          | DESTROY |              |       |
 
 #### Things to keep in mind
 
