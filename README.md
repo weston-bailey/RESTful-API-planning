@@ -150,8 +150,17 @@ You can use this markdown chart:
 
 | HTTP METHOD (_Verb_) | URL (_Nouns_) | CRUD | Response | Notes |
 | -------------------- | ------------- | ---- | -------- | ----- |
-|                      |               |      |          |       |
-|                      |               |      |          |       |
+|   Get                   |   /members            |read      | array of members         |  List of members     |
+|   Get                   |   /members/:id            | read     |    single member      |  details of single user     |
+|   POST                  |   /members    | Create | new user | new user |
+|    PUT                  | /members/:id | UPDATE | updates the members profile | updating members information |
+|    GET                  | /members/:id/books | read | read | specific member saves this book | list of books that the specific member has checked out
+|  DELETE                 | /members/:id | DELETE | delete member's information | deleting information displayed |
+|  DELETE                 | /members/:id/books | DELETE | delete checked out book | deleting checked out books |
+| GET                     | /books       | read | gets the name of the search book/ and it's genre | list of the books
+| GET                     | /books/:id   | read | single book  | detail of single book |
+| PUT                     | /books/:id   | UPDATE | checked out by a member | updates the book by whos checking the book out |
+<!-- | GET                     | /books/genre | Read | gets the specific genre   | grabs the list of genre -->
 
 #### Things to keep in mind
 
