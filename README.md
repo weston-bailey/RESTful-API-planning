@@ -156,7 +156,7 @@ You can use this markdown chart:
 |         DELETE      | `/members/:user_id`     | DESTROY | NO DATA| can send back a status 204(no content), a redirect to where to find data (GET `/members`)  |
 |         GET          | `/books`     | READ | Array of books | shows all the books     |
 |         GET          |  `/books/:book_id` | READ | single book| allows a member to find single book availability and genres |
-|         PUT/PATCH     | `/books/:book_id`     | UPDATE | updated books | redirect to where to find data or new book data |
+|         PUT/PATCH     | `/books/:book_id`     | UPDATE | updated books checkout and return | redirect to where to find data or new book data |
 |         GET          | `/genres`     | READ | Array of genres | shows all genres of the books  |
 |         GET          | `/genres/:genre_id`     | READ | single genre | shows all the books in selected genre   |
 
